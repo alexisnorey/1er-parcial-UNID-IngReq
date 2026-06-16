@@ -1,7 +1,26 @@
 const characters_container = document.querySelector("#characters_container")
-const randomPage = Math.floor(Math.random() * 42) + 1
+const prevPage = document.querySelector("#prev_page")
+const nextPage = document.querySelector("#next_page")
+const currentPage = document.querySelector("#current_page")
+
 document.addEventListener("DOMContentLoaded", async () => {
-  const response = await fetch(`https://rickandmortyapi.com/api/character?page=${randomPage}`, {
+  loadDataPage()
+})
+
+prevPage.addEventListener("click", e => {
+  e.preventDefault()
+  const link = prevPage.getAttribute("href")
+  loadDataPage(link)
+})
+
+nextPage.addEventListener("click", e => {
+  e.preventDefault()
+  const link = nextPage.getAttribute("href")
+  loadDataPage(link)
+})
+
+const loadDataPage = async (link = 'https://rickandmortyapi.com/api/character') => {
+  const response = await fetch(link, {
     method: "GET",
     cors: "cors"
   })
@@ -10,20 +29,29 @@ document.addEventListener("DOMContentLoaded", async () => {
   const metadata = data.info
   const charactersHTML = renderCharacters(characters)
   characters_container.innerHTML = charactersHTML
-  attachCharacterClickHandlers()
-})
-
-const attachCharacterClickHandlers = () => {
-  characters_container.addEventListener("click", (event) => {
-    const card = event.target.closest(".character-card")
-    if (!card) return
-
-    const characterId = card.dataset.characterId
-    if (!characterId) return
-
-    window.location.href = `profile.html?id=${characterId}`
-  })
+  page = link.split("=")
+  currentPage.textContent = page[1] || 1
+  paginationNav(metadata)
 }
+
+const paginationNav = (metadata) => {
+  const totalPages = document.querySelector("#total_pages")
+  totalPages.textContent = metadata.pages
+  if (!metadata.prev) {
+    prevPage.classList.add("hidden")
+  } else {
+    prevPage.classList.remove("hidden")
+  }
+  if (!metadata.next) {
+    nextPage.classList.add("hidden")
+  } else {
+    nextPage.classList.remove("hidden")
+  }
+  prevPage.setAttribute("href", metadata.prev)
+
+  nextPage.setAttribute("href", metadata.next)
+}
+
 
 const renderCharacters = (characters) => {
   const statusColors = { Alive: "alive", Dead: "dead", unknown: "unknown" }
@@ -31,6 +59,7 @@ const renderCharacters = (characters) => {
     const statusClass = statusColors[character.status] || "unknown"
     return `
       <div class="character-card" data-character-id="${character.id}">
+        <a href="profile.html?id=${character.id}">
         <div class="card-img-wrapper">
           <span class="card-status-badge">
             <span class="status-dot ${statusClass}"></span>
@@ -49,6 +78,7 @@ const renderCharacters = (characters) => {
             </button>
           </div>
         </div>
+        </a>
       </div>
     `
   }).join("")
