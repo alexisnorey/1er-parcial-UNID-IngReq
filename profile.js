@@ -25,9 +25,8 @@ const updateStatus = (status) => {
     statusDot.classList.remove('alive', 'dead', 'unknown')
     statusDot.classList.add(status === 'Alive' ? 'alive' : status === 'Dead' ? 'dead' : 'unknown')
   }
-  badge.childNodes.forEach((node) => {
-    if (node.nodeType === Node.TEXT_NODE) node.textContent = ` ${status}`
-  })
+    const statusText = badge.querySelector('.profile-status-text')
+  if (statusText) statusText.textContent = status
 }
 
 const renderEpisodes = async (episodeUrls) => {
