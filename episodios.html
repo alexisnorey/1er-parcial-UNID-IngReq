@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +8,10 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-  <title>Rick & Morty — Personajes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Rick & Morty — Episodios</title>
 </head>
-
 <body>
-
   <div class="noise"></div>
 
   <header class="header">
@@ -26,9 +21,9 @@
         <span class="logo-text">Portal<span class="logo-accent">verse</span></span>
       </a>
       <nav class="nav">
-        <a href="#" class="nav-link active">Personajes</a>
-        <a href="/episodios.html" class="nav-link active">Episodios</a>
-        <a href="/locations.html" class="nav-link active">Locaciones</a>
+        <a href="index.html" class="nav-link">Personajes</a>
+        <a href="locations.html" class="nav-link">Locaciones</a>
+        <a href="episodios.html" class="nav-link active">Episodios</a>
       </nav>
     </div>
   </header>
@@ -44,39 +39,31 @@
       </div>
       <div class="hero-content">
         <span class="hero-badge">Explora el multiverso</span>
-        <h1 class="hero-title">Rick &amp; Morty</h1>
-        <p class="hero-subtitle">
-          Conoce a los personajes más icónicos a través del infinito cosmos.
-        </p>
+        <h1 class="hero-title">Episodios</h1>
+        <p class="hero-subtitle">Todas las aventuras interdimensionales, temporada por temporada.</p>
         <div class="hero-stats">
-          <div class="stat">
-            <span class="stat-value" id="total-characters">826</span>
-            <span class="stat-label">Personajes</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat">
-            <span class="stat-value">126</span>
-            <span class="stat-label">Locaciones</span>
-          </div>
-          <div class="stat-divider"></div>
           <div class="stat">
             <span class="stat-value">51</span>
             <span class="stat-label">Episodios</span>
           </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-value">826</span>
+            <span class="stat-label">Personajes</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-value">5</span>
+            <span class="stat-label">Temporadas</span>
+          </div>
         </div>
-      </div>
-      <div class="hero-scroll">
-        <span>Descubre</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
-        </svg>
       </div>
     </section>
 
     <section class="characters-section">
       <div class="section-header">
-        <h2 class="section-title">Galeria de Personajes</h2>
-        <p class="section-desc">Cada tarjeta abre un portal a una historia distinta.</p>
+        <h2 class="section-title">Galería de Episodios</h2>
+        <p class="section-desc">Cada capítulo, un portal a una aventura distinta.</p>
       </div>
       <div class="container mx-auto px-4 md:px-8">
 
@@ -88,45 +75,19 @@
                 <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                 </svg>
-                <input type="search" class="input filter-search" placeholder="Buscar personaje..." />
+                <input type="search" class="input filter-search" placeholder="Buscar episodio..." />
               </div>
             </div>
             <div class="filter-group">
-              <span class="filter-label">Status</span>
+              <span class="filter-label">Temporada</span>
               <div class="filter-options">
-                <button class="filter-chip active" data-filter="status" data-value="">Todos</button>
-                <button class="filter-chip" data-filter="status" data-value="alive">
-                  <span class="status-dot alive"></span> Vivos
-                </button>
-                <button class="filter-chip" data-filter="status" data-value="dead">
-                  <span class="status-dot dead"></span> Muertos
-                </button>
-                <button class="filter-chip" data-filter="status" data-value="unknown">
-                  <span class="status-dot unknown"></span> ?
-                </button>
+                <button class="filter-chip active" data-season="">Todas</button>
+                <button class="filter-chip" data-season="S01">T1</button>
+                <button class="filter-chip" data-season="S02">T2</button>
+                <button class="filter-chip" data-season="S03">T3</button>
+                <button class="filter-chip" data-season="S04">T4</button>
+                <button class="filter-chip" data-season="S05">T5</button>
               </div>
-            </div>
-            <div class="filter-group">
-              <span class="filter-label">Especie</span>
-              <select class="select filter-select">
-                <option value="">Todas</option>
-                <option value="human">Humano</option>
-                <option value="alien">Alien</option>
-                <option value="humanoid">Humanoide</option>
-                <option value="robot">Robot</option>
-                <option value="cronenberg">Cronenberg</option>
-                <option value="animal">Animal</option>
-              </select>
-            </div>
-            <div class="filter-group">
-              <span class="filter-label">Género</span>
-              <select class="select filter-select">
-                <option value="">Todos</option>
-                <option value="female">Femenino</option>
-                <option value="male">Masculino</option>
-                <option value="genderless">Sin género</option>
-                <option value="unknown">Desconocido</option>
-              </select>
             </div>
           </div>
         </div>
@@ -142,7 +103,7 @@
             <span class="pagination-label">Página</span>
             <span class="pagination-current" id="current_page">1</span>
             <span class="pagination-sep">de</span>
-            <span class="pagination-total" id="total_pages">42</span>
+            <span class="pagination-total" id="total_pages">3</span>
           </div>
           <a href="#" id="next_page" class="pagination-btn pagination-next">
             Siguiente
@@ -153,7 +114,7 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6"
-          id="characters_container">
+          id="episodes_container">
         </div>
       </div>
     </section>
@@ -161,8 +122,7 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <p class="footer-copy">&copy; 2025 Portalverse &mdash; Hecho con <span class="footer-heart">&#10022;</span> para
-        exploradores del multiverso.</p>
+      <p class="footer-copy">&copy; 2025 Portalverse &mdash; Hecho con <span class="footer-heart">&#10022;</span> para exploradores del multiverso.</p>
       <div class="footer-links">
         <a href="#" class="footer-link">GitHub</a>
         <a href="#" class="footer-link">Documentación</a>
@@ -171,7 +131,6 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="episodes.js"></script>
 </body>
-
 </html>
