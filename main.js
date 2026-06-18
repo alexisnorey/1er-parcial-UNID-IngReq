@@ -84,8 +84,26 @@ const renderCharacters = (characters) => {
   }).join("")
 }
 
+const filterState = { name: "", status: "" }
+
+function filterUrl() {
+  const p = new URLSearchParams()
+  if (filterState.name) p.set("name", filterState.name)
+  if (filterState.status) p.set("status", filterState.status)
+  const q = p.toString()
+  return `https://rickandmortyapi.com/api/character${q ? "?" + q : ""}`
+}
+
 document.querySelector(".filter-search").addEventListener("input", function() {
-  const name = this.value
-  const url = name ? `https://rickandmortyapi.com/api/character/?name=${name}` : "https://rickandmortyapi.com/api/character"
-  loadDataPage(url)
+  filterState.name = this.value
+  loadDataPage(filterUrl())
+})
+
+document.querySelectorAll(".filter-chip").forEach(btn => {
+  btn.addEventListener("click", function() {
+    document.querySelectorAll(".filter-chip").forEach(b => b.classList.remove("active"))
+    this.classList.add("active")
+    filterState.status = this.dataset.value
+    loadDataPage(filterUrl())
+  })
 })
